@@ -25,7 +25,7 @@ norecursedirs = "node_modules dist"
 paths = ["egg_timer"]
 
 [tool.poetry]
-name = "egg_timer"
+name = "egg-timer"
 version = "v1.0.0"
 description = "A simpler way to handle timeouts in Python"
 authors = ["Mike Salvatore <mike.s.salvatore@gmail.com>"]
