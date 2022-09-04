@@ -27,7 +27,7 @@ paths = ["egg_timer"]
 [tool.poetry]
 name = "egg_timer"
 version = "v1.0.0"
-description = "A simpler way to set alarms in Python"
+description = "A simpler way to handle timeouts in Python"
 authors = ["Mike Salvatore <mike.s.salvatore@gmail.com>"]
 license = "MIT"
 classifiers=[
