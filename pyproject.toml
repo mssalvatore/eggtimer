@@ -29,13 +29,14 @@ name = "egg_timer"
 version = "v1.0.0"
 description = "A simpler way to handle timeouts in Python"
 authors = ["Mike Salvatore <mike.s.salvatore@gmail.com>"]
-license = "MIT"
+license = "GPLv3"
 classifiers=[
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries",
     "Topic :: Utilities",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 ]
 include = ["CHANGELOG.md"]
 
