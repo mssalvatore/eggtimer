@@ -38,6 +38,7 @@ classifiers=[
     "Topic :: Utilities",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 ]
+repository = "https://github.com/mssalvatore/egg-timer"
 readme = "README.md"
 include = ["CHANGELOG.md"]
 
