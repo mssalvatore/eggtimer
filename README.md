@@ -98,3 +98,7 @@ class EggTimer(builtins.object)
 
 >>>
 ```
+
+## Running the tests
+
+Running the tests is as simple as `poetry install && poetry run pytest`
