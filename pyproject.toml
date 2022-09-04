@@ -26,7 +26,7 @@ paths = ["egg_timer"]
 
 [tool.poetry]
 name = "egg-timer"
-version = "v1.0.0"
+version = "v1.0.0.post1"
 description = "A simpler way to handle timeouts in Python"
 authors = ["Mike Salvatore <mike.s.salvatore@gmail.com>"]
 license = "GPLv3"
