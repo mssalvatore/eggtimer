@@ -20,7 +20,7 @@ class EggTimer:
         self._timeout_sec = timeout_sec
         self._start_time = time.time()
 
-    def is_expired(self):
+    def is_expired(self) -> bool:
         """
         Check whether or not the timer has expired
 
