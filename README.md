@@ -22,8 +22,9 @@ while time() - start_time < timeout_sec:
 
 What is the purpose of this loop? Oh, I see, it's a timeout. Is the order of
 operations correct in my loop condition? Have I correctly calculated
-`time_remaining`?  Is my `if` clause correct? Hint: it's not. How many times
-have I duplicated this code within my application?
+`time_remaining`?  Is my `if` clause correct? _Hint: It's not._ Does this code
+behave properly if the system clock is updated after I set `start_time`? _Hint:
+It doesn't._ How many times have I duplicated this code within my application?
 
 We can do better. **EggTimer** can help.
 
