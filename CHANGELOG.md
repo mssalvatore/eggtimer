@@ -6,6 +6,11 @@ The format is based on [Keep a
 Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
 the [PEP 440 version scheme](https://peps.python.org/pep-0440/#version-scheme).
 
+## [Unreleased]
+## Changed
+- Use time.monotonic_ns() instead of time.time()
+
+
 ## [v1.0.1]
 ### Added
 - Support for type hinting

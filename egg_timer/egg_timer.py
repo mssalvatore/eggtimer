@@ -18,7 +18,7 @@ class EggTimer:
                             seconds to set the timeout for.
         """
         self._timeout_sec = timeout_sec
-        self._start_time = time.time()
+        self._start_time = time.monotonic_ns()
 
     def is_expired(self) -> bool:
         """
@@ -37,11 +37,11 @@ class EggTimer:
         :return: The number of seconds until the timer expires. If the timer is expired, this
                  function returns 0 (it will never return a negative number).
         """
-        time_remaining = self._timeout_sec - (time.time() - self._start_time)
+        time_remaining = self._timeout_sec - (time.monotonic_ns() - self._start_time)
         return max(time_remaining, 0)
 
     def reset(self):
         """
         Reset the timer without changing the timeout
         """
-        self._start_time = time.time()
+        self._start_time = time.monotonic_ns()
