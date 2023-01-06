@@ -8,7 +8,7 @@ the [PEP 440 version scheme](https://peps.python.org/pep-0440/#version-scheme).
 
 
 ## [v1.1.0] - 2023-01-05
-## Changed
+### Changed
 - Use time.monotonic_ns() instead of time.time()
 
 
