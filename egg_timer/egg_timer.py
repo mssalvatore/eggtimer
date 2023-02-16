@@ -7,8 +7,8 @@ class EggTimer:
     """
 
     def __init__(self):
-        self._timeout_sec = 0
-        self._start_time = 0
+        self._timeout_ns = 0
+        self._start_time_ns = 0
 
     def set(self, timeout_sec: float):
         """
@@ -17,8 +17,8 @@ class EggTimer:
         :param timeout_sec: A non-negative floating point number expressing the number of
                             seconds to set the timeout for.
         """
-        self._timeout_sec = timeout_sec
-        self._start_time = time.monotonic_ns()
+        self._timeout_ns = timeout_sec * 1e9
+        self._start_time_ns = time.monotonic_ns()
 
     def is_expired(self) -> bool:
         """
@@ -37,11 +37,11 @@ class EggTimer:
         :return: The number of seconds until the timer expires. If the timer is expired, this
                  function returns 0 (it will never return a negative number).
         """
-        time_remaining = self._timeout_sec - (time.monotonic_ns() - self._start_time)
+        time_remaining = (self._timeout_ns - (time.monotonic_ns() - self._start_time_ns)) / 1e9
         return max(time_remaining, 0)
 
     def reset(self):
         """
         Reset the timer without changing the timeout
         """
-        self._start_time = time.monotonic_ns()
+        self._start_time_ns = time.monotonic_ns()
