@@ -16,8 +16,8 @@ def start_time(set_current_time: Callable[[float], None]) -> float:
 
 @pytest.fixture
 def set_current_time(monkeypatch) -> Callable[[float], None]:
-    def inner(current_time: float):
-        monkeypatch.setattr(time, "monotonic_ns", lambda: current_time)
+    def inner(current_time_sec: float):
+        monkeypatch.setattr(time, "monotonic_ns", lambda: current_time_sec * 1e9)
 
     return inner
 
