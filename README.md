@@ -103,3 +103,8 @@ class EggTimer(builtins.object)
 ## Running the tests
 
 Running the tests is as simple as `poetry install && poetry run pytest`
+
+## License
+
+EggTimer is open-source software licensed under the GNU General Public License
+v3.0.
