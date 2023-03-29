@@ -3,6 +3,7 @@
 There are some ubiquitous patterns that are elegant and simple. There are
 others that are not.
 
+#### Common Solution
 ```python
 from time import time, sleep
 
@@ -29,6 +30,7 @@ It doesn't._ How many times is this code duplicated within my application?
 
 We can do better. **EggTimer** can help.
 
+#### EggTimer Example
 ```python
 from time import sleep
 
@@ -52,6 +54,17 @@ defects is significantly lower, too!
 Install with `pip install -U egg-timer`
 
 ## Documentation
+
+### Classes
+`EggTimer` - A class for checking whether or not a certain amount of time has
+elapsed.
+
+`ThreadSafeEggTimer` - A thread-safe implementation of `EggTimer`.
+
+See [EggTimer Example](#eggtimer-example) for an example of how to use
+`EggTime`. `ThreadSafeEggTimer` shares the same interface.
+
+### Class documentation
 
 ```pycon
 Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux

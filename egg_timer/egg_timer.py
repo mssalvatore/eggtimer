@@ -1,3 +1,4 @@
+import threading
 import time
 
 
@@ -45,3 +46,30 @@ class EggTimer:
         Reset the timer without changing the timeout
         """
         self._start_time_ns = time.monotonic_ns()
+
+
+class ThreadSafeEggTimer(EggTimer):
+    """
+    A thread-safe implementation of EggTimer.
+    """
+
+    def __init__(self):
+        self._lock = threading.Lock()
+        self._egg_timer = EggTimer()
+
+    def set(self, timeout_sec: float):
+        with self._lock:
+            self._egg_timer.set(timeout_sec)
+
+    def is_expired(self) -> bool:
+        with self._lock:
+            return self._egg_timer.is_expired()
+
+    @property
+    def time_remaining_sec(self) -> float:
+        with self._lock:
+            return self._egg_timer.time_remaining_sec
+
+    def reset(self):
+        with self._lock:
+            self._egg_timer.reset()
