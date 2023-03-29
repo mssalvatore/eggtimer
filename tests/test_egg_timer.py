@@ -3,7 +3,7 @@ from typing import Callable
 
 import pytest
 
-from egg_timer import EggTimer
+from egg_timer import EggTimer, ThreadSafeEggTimer
 
 
 @pytest.fixture
@@ -22,11 +22,15 @@ def set_current_time(monkeypatch) -> Callable[[float], None]:
     return inner
 
 
+@pytest.mark.parametrize("egg_timer_factory", [EggTimer, ThreadSafeEggTimer])
 @pytest.mark.parametrize(("timeout"), [5, 1.25])
 def test_timer_not_expired(
-    start_time: float, set_current_time: Callable[[float], None], timeout: float
+    egg_timer_factory: Callable[[], EggTimer],
+    start_time: float,
+    set_current_time: Callable[[float], None],
+    timeout: float,
 ):
-    t = EggTimer()
+    t = egg_timer_factory()
     t.set(timeout)
 
     assert not t.is_expired()
@@ -35,11 +39,15 @@ def test_timer_not_expired(
     assert not t.is_expired()
 
 
+@pytest.mark.parametrize("egg_timer_factory", [EggTimer, ThreadSafeEggTimer])
 @pytest.mark.parametrize(("timeout"), [5, 1.25])
 def test_timer_expired(
-    start_time: float, set_current_time: Callable[[float], None], timeout: float
+    egg_timer_factory: Callable[[], EggTimer],
+    start_time: float,
+    set_current_time: Callable[[float], None],
+    timeout: float,
 ):
-    t = EggTimer()
+    t = egg_timer_factory()
     t.set(timeout)
 
     assert not t.is_expired()
@@ -51,15 +59,22 @@ def test_timer_expired(
     assert t.is_expired()
 
 
-def test_unset_timer_expired():
-    t = EggTimer()
+@pytest.mark.parametrize("egg_timer_factory", [EggTimer, ThreadSafeEggTimer])
+def test_unset_timer_expired(egg_timer_factory: Callable[[], EggTimer]):
+    t = egg_timer_factory()
 
     assert t.is_expired()
 
 
+@pytest.mark.parametrize("egg_timer_factory", [EggTimer, ThreadSafeEggTimer])
 @pytest.mark.parametrize(("timeout"), [5, 1.25])
-def test_timer_reset(start_time: float, set_current_time: Callable[[float], None], timeout: float):
-    t = EggTimer()
+def test_timer_reset(
+    egg_timer_factory: Callable[[], EggTimer],
+    start_time: float,
+    set_current_time: Callable[[float], None],
+    timeout: float,
+):
+    t = egg_timer_factory()
     t.set(timeout)
 
     assert not t.is_expired()
@@ -74,10 +89,15 @@ def test_timer_reset(start_time: float, set_current_time: Callable[[float], None
     assert t.is_expired()
 
 
-def test_time_remaining(start_time: float, set_current_time: Callable[[float], None]):
+@pytest.mark.parametrize("egg_timer_factory", [EggTimer, ThreadSafeEggTimer])
+def test_time_remaining(
+    egg_timer_factory: Callable[[], EggTimer],
+    start_time: float,
+    set_current_time: Callable[[float], None],
+):
     timeout = 5
 
-    t = EggTimer()
+    t = egg_timer_factory()
     t.set(timeout)
 
     assert t.time_remaining_sec == timeout
@@ -86,10 +106,15 @@ def test_time_remaining(start_time: float, set_current_time: Callable[[float], N
     assert t.time_remaining_sec == 3
 
 
-def test_time_remaining_is_zero(start_time: float, set_current_time: Callable[[float], None]):
+@pytest.mark.parametrize("egg_timer_factory", [EggTimer, ThreadSafeEggTimer])
+def test_time_remaining_is_zero(
+    egg_timer_factory: Callable[[], EggTimer],
+    start_time: float,
+    set_current_time: Callable[[float], None],
+):
     timeout = 5
 
-    t = EggTimer()
+    t = egg_timer_factory()
     t.set(timeout)
 
     set_current_time(start_time + timeout)

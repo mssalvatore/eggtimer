@@ -1,1 +1,1 @@
-from .egg_timer import EggTimer
+from .egg_timer import EggTimer, ThreadSafeEggTimer
