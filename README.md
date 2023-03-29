@@ -6,15 +6,16 @@ others that are not.
 ```python
 from time import time, sleep
 
+max_sleep_time_sec = 1.5
+
 start_time = time()
 timeout_sec = 42.0
-max_sleep_time_sec = 1.5
 
 while time() - start_time < timeout_sec:
     # Do or check some stuff
 
     time_remaining = timeout_sec - (time() - start_time)
-    if time_remaining > 0:
+    if time_remaining > max_slep_time_sec:
         sleep(min(time_remaining, max_sleep_time_sec))
     else:
         sleep(max_sleep_time_sec)
@@ -24,16 +25,19 @@ What is the purpose of this loop? Oh, I see, it's a timeout. Is the order of
 operations correct in my loop condition? Have I correctly calculated
 `time_remaining`?  Is my `if` clause correct? _Hint: It's not._ Does this code
 behave properly if the system clock is updated after I set `start_time`? _Hint:
-It doesn't._ How many times have I duplicated this code within my application?
+It doesn't._ How many times is this code duplicated within my application?
 
 We can do better. **EggTimer** can help.
 
 ```python
+from time import sleep
+
 from egg_timer import EggTimer
+
+max_sleep_time_sec = 1.5
 
 timer = EggTimer()
 timer.set(42.0)
-max_sleep_time_sec = 1.5
 
 while not timer.is_expired():
     # Do or check some stuff
@@ -41,7 +45,7 @@ while not timer.is_expired():
     sleep(min(timer.time_remaining_sec, max_sleep_time_sec))
 ```
 
-Ah, that's better. Clear, concise, reusable, and expressive. The risk of
+Ah, that's better! Clear, concise, reusable, and expressive. The risk of
 defects is significantly lower, too!
 
 ## Installation
