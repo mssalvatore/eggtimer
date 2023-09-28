@@ -40,7 +40,7 @@ classifiers=[
 ]
 repository = "https://github.com/mssalvatore/egg-timer"
 readme = "README.md"
-include = ["CHANGELOG.md"]
+include = ["CHANGELOG.md", "README.md"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
