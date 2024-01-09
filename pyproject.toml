@@ -2,7 +2,7 @@
 line-length = 100
 
 [tool.isort]
-known_first_party = "egg_timer"
+known_first_party = "eggtimer"
 line_length = 100
 ### for compatibility with black
 multi_line_output = 3
@@ -22,10 +22,10 @@ addopts = "-v --capture=sys tests"
 norecursedirs = "node_modules dist"
 
 [tool.vulture]
-paths = ["egg_timer"]
+paths = ["eggtimer"]
 
 [tool.poetry]
-name = "egg-timer"
+name = "eggtimer"
 version = "v1.2.0"
 description = "A simpler way to handle timeouts in Python"
 authors = ["Mike Salvatore <mike.s.salvatore@gmail.com>"]
@@ -38,7 +38,7 @@ classifiers=[
     "Topic :: Utilities",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 ]
-repository = "https://github.com/mssalvatore/egg-timer"
+repository = "https://github.com/mssalvatore/eggtimer"
 readme = "README.md"
 include = ["CHANGELOG.md", "README.md"]
 
