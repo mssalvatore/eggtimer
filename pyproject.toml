@@ -26,7 +26,7 @@ paths = ["eggtimer"]
 
 [tool.poetry]
 name = "eggtimer"
-version = "v1.2.0"
+version = "v1.3.0"
 description = "A simpler way to handle timeouts in Python"
 authors = ["Mike Salvatore <mike.s.salvatore@gmail.com>"]
 license = "GPLv3"
@@ -40,6 +40,7 @@ classifiers=[
 ]
 repository = "https://github.com/mssalvatore/eggtimer"
 readme = "README.md"
+packages = [{include="egg_timer"},{include="eggtimer"}]
 include = ["CHANGELOG.md", "README.md"]
 
 [tool.poetry.dependencies]
