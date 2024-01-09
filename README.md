@@ -34,7 +34,7 @@ We can do better. **EggTimer** can help.
 ```python
 from time import sleep
 
-from egg_timer import EggTimer
+from eggtimer import EggTimer
 
 max_sleep_time_sec = 1.5
 
@@ -69,9 +69,9 @@ See [EggTimer Example](#eggtimer-example) for an example of how to use
 ```pycon
 Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> from egg_timer import EggTimer
+>>> from eggtimer import EggTimer
 >>> help(EggTimer)
-Help on class EggTimer in module egg_timer.egg_timer:
+Help on class EggTimer in module eggtimer.eggtimer:
 
 class EggTimer(builtins.object)
  |  A class for checking whether or not a certain amount of time has elapsed.
