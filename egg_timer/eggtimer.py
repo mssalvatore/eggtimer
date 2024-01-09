@@ -55,21 +55,21 @@ class ThreadSafeEggTimer(EggTimer):
 
     def __init__(self):
         self._lock = threading.Lock()
-        self._egg_timer = EggTimer()
+        self._eggtimer = EggTimer()
 
     def set(self, timeout_sec: float):
         with self._lock:
-            self._egg_timer.set(timeout_sec)
+            self._eggtimer.set(timeout_sec)
 
     def is_expired(self) -> bool:
         with self._lock:
-            return self._egg_timer.is_expired()
+            return self._eggtimer.is_expired()
 
     @property
     def time_remaining_sec(self) -> float:
         with self._lock:
-            return self._egg_timer.time_remaining_sec
+            return self._eggtimer.time_remaining_sec
 
     def reset(self):
         with self._lock:
-            self._egg_timer.reset()
+            self._eggtimer.reset()
